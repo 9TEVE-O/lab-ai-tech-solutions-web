@@ -25,8 +25,8 @@ Install dependencies, run the development server, then build for production usin
 
 Active build.
 
+```text
 (\_/)
-
-( -.-)   “No AI theatre.”
-
+( -.-)  “No AI theatre.”
 o_(")(") “Only evidence trails.”
+```
