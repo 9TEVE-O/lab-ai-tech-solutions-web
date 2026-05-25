@@ -24,3 +24,7 @@ Install dependencies, run the development server, then build for production usin
 ## Status
 
 Active build.
+
+(\_/)
+( -.-)   “No AI theatre.”
+o_(")(") “Only evidence trails.”
