@@ -74,7 +74,7 @@ function generateFiles(form) {
   const services = list(form.services);
   const allowed = list(form.allowedAgentActions);
   const restricted = list(form.restrictedAgentActions);
-  const dataHandled = form.dataHandled.split(',').map((item) => item.trim()).filter(Boolean);
+  const dataHandled = (form.dataHandled || '').split(',').map((item) => item.trim()).filter(Boolean);
   const readiness = score(form);
   const today = new Date().toISOString().slice(0, 10);
 
