@@ -17,6 +17,7 @@ export default function Generator() {
   const [files, setFiles] = useState([]);
   const [openFile, setOpenFile] = useState(null);
   const [copied, setCopied] = useState(null);
+  const [copyError, setCopyError] = useState(null);
 
   const mode = MODES.find(m => m.id === modeId);
 
@@ -24,12 +25,21 @@ export default function Generator() {
     const result = generate(spec, modeId);
     setFiles(result);
     setOpenFile(result[0]?.id ?? null);
+    setCopied(null);
+    setCopyError(null);
   }
 
-  function handleCopy(file) {
-    navigator.clipboard.writeText(file.content);
-    setCopied(file.id);
-    setTimeout(() => setCopied(null), 2000);
+  async function handleCopy(file) {
+    try {
+      await navigator.clipboard.writeText(file.content);
+      setCopied(file.id);
+      setCopyError(null);
+      setTimeout(() => setCopied(null), 2000);
+    } catch {
+      setCopied(null);
+      setCopyError(file.id);
+      setTimeout(() => setCopyError(null), 3000);
+    }
   }
 
   function handleDownload(file) {
@@ -62,7 +72,7 @@ export default function Generator() {
             role="tab"
             aria-selected={modeId === m.id}
             className={'mode-tab' + (modeId === m.id ? ' active' : '')}
-            onClick={() => { setModeId(m.id); setFiles([]); setOpenFile(null); }}
+            onClick={() => { setModeId(m.id); setFiles([]); setOpenFile(null); setCopyError(null); }}
           >
             <span className="mode-label">{m.label}</span>
             <span className="mode-tagline">{m.tagline}</span>
@@ -113,7 +123,7 @@ export default function Generator() {
                 <span className="file-path">{activeFile.path}</span>
                 <div className="file-actions">
                   <button className="action-btn" onClick={() => handleCopy(activeFile)}>
-                    {copied === activeFile.id ? 'Copied!' : 'Copy'}
+                    {copied === activeFile.id ? 'Copied!' : copyError === activeFile.id ? 'Copy failed' : 'Copy'}
                   </button>
                   <button className="action-btn" onClick={() => handleDownload(activeFile)}>
                     Download
