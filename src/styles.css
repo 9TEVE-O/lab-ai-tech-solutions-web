@@ -30,6 +30,17 @@ a {
   text-decoration: none;
 }
 
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
 .site-shell {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
@@ -144,6 +155,7 @@ p {
   gap: 8px;
   min-height: 46px;
   padding: 0 18px;
+  border: 0;
   border-radius: 999px;
   font-weight: 800;
 }
@@ -155,6 +167,7 @@ p {
 
 .secondary {
   border: 1px solid rgba(255, 255, 255, 0.18);
+  background: transparent;
   color: #ffffff;
 }
 
@@ -163,7 +176,10 @@ p {
 .flow-card,
 .evidence-list article,
 .roadmap-grid article,
-.access-card {
+.access-card,
+.generator-form,
+.generated-panel,
+.score-card {
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.055);
   box-shadow: 0 20px 80px rgba(0, 0, 0, 0.32);
@@ -238,6 +254,145 @@ p {
   font-weight: 800;
 }
 
+.generator-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.generator-topline {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.generator-topline > div:first-child {
+  max-width: 820px;
+}
+
+.score-card {
+  min-width: 168px;
+  padding: 22px;
+  border-radius: 28px;
+  text-align: center;
+}
+
+.score-card span,
+.score-card small {
+  display: block;
+  color: #b8c0cc;
+}
+
+.score-card strong {
+  display: block;
+  color: #8fffe1;
+  font-size: 3.2rem;
+  line-height: 1;
+}
+
+.generator-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.generator-form,
+.generated-panel {
+  padding: 22px;
+  border-radius: 28px;
+}
+
+.generator-form {
+  display: grid;
+  gap: 15px;
+}
+
+.form-grid-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.generator-field {
+  display: grid;
+  gap: 7px;
+}
+
+.generator-field span {
+  color: #e7edf7;
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.generator-field input,
+.generator-field textarea,
+.generator-field select {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.26);
+  color: #f7f3ea;
+  outline: none;
+  padding: 12px 13px;
+}
+
+.generator-field textarea {
+  resize: vertical;
+}
+
+.generator-field input:focus,
+.generator-field textarea:focus,
+.generator-field select:focus {
+  border-color: #8fffe1;
+}
+
+.generated-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.file-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.file-tabs button {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.2);
+  color: #cbd3df;
+  padding: 8px 11px;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.file-tabs button.active {
+  border-color: #8fffe1;
+  background: #8fffe1;
+  color: #07100d;
+}
+
+.generated-code {
+  max-height: 780px;
+  overflow: auto;
+  margin: 0;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #e7edf7;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.84rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 .evidence-section {
   border-top: 1px solid rgba(255, 255, 255, 0.09);
   border-bottom: 1px solid rgba(255, 255, 255, 0.09);
@@ -275,6 +430,18 @@ p {
   max-width: 660px;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media (max-width: 920px) {
+  .generator-topline,
+  .generator-layout,
+  .form-grid-two {
+    grid-template-columns: 1fr;
+  }
+
+  .generator-topline {
+    display: grid;
+  }
 }
 
 @media (max-width: 820px) {
