@@ -1,4 +1,5 @@
 import { ArrowRight, Bot, CheckCircle2, ClipboardList, FileSearch, GitBranch, LockKeyhole, ShieldCheck, Sparkles } from 'lucide-react';
+import Generator from './Generator';
 
 const pillars = [
   {
@@ -45,6 +46,7 @@ function App() {
           <a href="#evidence">Evidence</a>
           <a href="#roadmap">Roadmap</a>
           <a href="#access">Access</a>
+          <a href="#generator">Generator</a>
         </div>
       </nav>
 
@@ -142,6 +144,8 @@ function App() {
         </p>
         <a className="button primary" href="mailto:stevenleesproduction@hotmail.com?subject=LAB%20AI%20%26%20Tech%20Solutions%20-%20Early%20Access">Request early access <ArrowRight size={18} /></a>
       </section>
+
+      <Generator />
     </main>
   );
 }
