@@ -1,4 +1,5 @@
 import { ArrowRight, Bot, CheckCircle2, ClipboardList, FileSearch, GitBranch, LockKeyhole, ShieldCheck, Sparkles } from 'lucide-react';
+import AgentReadyGenerator from './AgentReadyGenerator.jsx';
 
 const pillars = [
   {
@@ -24,8 +25,8 @@ const pillars = [
 ];
 
 const roadmap = [
-  ['Now', 'Operating hub shell, proof architecture, demo narrative, and access CTA.'],
-  ['Next', 'Interactive intake demo, evidence receipt output, and public build-log feed.'],
+  ['Now', 'Operating hub shell, Agent-Ready Website Pack generator, proof architecture, and access CTA.'],
+  ['Next', 'Website scan/import, evidence receipt output, and public build-log feed.'],
   ['Later', 'Auth, client workspace, document upload, agent orchestration, and policy controls.'],
 ];
 
@@ -33,6 +34,7 @@ const evidence = [
   'Existing public proof-of-concept established before this expansion sprint.',
   'Repository created as the source of truth for site, docs, and sprint decisions.',
   'Current focus: expand proof into a serious public operating surface.',
+  'Agent-ready generator added as the first interactive product surface.',
 ];
 
 function App() {
@@ -42,6 +44,7 @@ function App() {
         <a className="brand" href="#top">LAB AI & Tech Solutions</a>
         <div className="nav-links" aria-label="Primary navigation">
           <a href="#demo">Demo</a>
+          <a href="#agent-ready">Generator</a>
           <a href="#evidence">Evidence</a>
           <a href="#roadmap">Roadmap</a>
           <a href="#access">Access</a>
@@ -56,7 +59,7 @@ function App() {
             LAB AI & Tech Solutions helps turn messy workflows, documents, and agent activity into structured systems that can be reviewed, improved, and trusted.
           </p>
           <div className="cta-row">
-            <a className="button primary" href="#access">Request early access <ArrowRight size={18} /></a>
+            <a className="button primary" href="#agent-ready">Try the agent-ready generator <ArrowRight size={18} /></a>
             <a className="button secondary" href="#evidence">View proof layer</a>
           </div>
         </div>
@@ -66,7 +69,7 @@ function App() {
           <ul>
             <li><CheckCircle2 size={18} /> Public proof exists</li>
             <li><CheckCircle2 size={18} /> Repository active</li>
-            <li><ClipboardList size={18} /> Demo, evidence, roadmap, access now being expanded</li>
+            <li><ClipboardList size={18} /> Agent-ready generator now in build</li>
           </ul>
         </aside>
       </section>
@@ -90,18 +93,20 @@ function App() {
       <section id="demo" className="section split">
         <div>
           <p className="eyebrow">Demo pathway</p>
-          <h2>Input. Review. Evidence. Action.</h2>
+          <h2>Agent-readable guidance. Human review. Safer routing.</h2>
           <p>
-            The first demo pathway will show how a project, document, or workflow can be assessed through a practical review loop and returned as a clear evidence receipt.
+            The first interactive pathway generates a website-ready pack that helps businesses publish structured machine-readable guidance, clarify content-use boundaries, and reduce misrepresentation risk for compatible AI systems.
           </p>
         </div>
         <div className="flow-card">
-          <span>1. Submit messy input</span>
-          <span>2. Run structured review</span>
-          <span>3. Generate evidence receipt</span>
-          <span>4. Recommend next action</span>
+          <span>1. Enter business details</span>
+          <span>2. Generate agent guidance files</span>
+          <span>3. Review safety and evidence rules</span>
+          <span>4. Export an installation pack</span>
         </div>
       </section>
+
+      <AgentReadyGenerator />
 
       <section id="evidence" className="section evidence-section">
         <div className="section-header">
