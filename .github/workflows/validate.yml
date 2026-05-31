@@ -1,0 +1,38 @@
+name: Validate web app
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - fix/generator-policy-output-alignment
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Preview smoke test
+        run: |
+          set +e
+          timeout 10s npm run preview -- --host 127.0.0.1
+          code=$?
+          if [ "$code" = "124" ]; then
+            echo "Preview server started and stayed alive for smoke-test window."
+            exit 0
+          fi
+          exit "$code"

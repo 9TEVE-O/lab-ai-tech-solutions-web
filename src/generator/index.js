@@ -1,5 +1,6 @@
 import { MODES } from './modes';
 import { parseSpec } from './parse';
+import { postProcessGeneratedFile } from './postProcess';
 import {
   genAiManifest,
   genLlmsTxt,
@@ -40,6 +41,7 @@ export function generate(rawSpec, modeId) {
   const spec = parseSpec(rawSpec);
   return mode.fileIds.map(id => {
     const def = FILE_DEFS[id];
-    return { id, filename: def.filename, path: def.path, content: def.gen(spec) };
+    const content = postProcessGeneratedFile(id, def.gen(spec), spec);
+    return { id, filename: def.filename, path: def.path, content };
   });
 }
