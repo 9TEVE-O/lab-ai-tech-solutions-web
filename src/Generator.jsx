@@ -18,6 +18,8 @@ export default function Generator() {
   const [openFile, setOpenFile] = useState(null);
   const [copied, setCopied] = useState(null);
   const [copyError, setCopyError] = useState(null);
+  const [copyTimeoutId, setCopyTimeoutId] = useState(null);
+  const [errorTimeoutId, setErrorTimeoutId] = useState(null);
 
   const mode = MODES.find(m => m.id === modeId);
 
