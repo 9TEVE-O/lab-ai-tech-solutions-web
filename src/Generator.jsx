@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MODES } from './generator/modes';
 import { generate } from './generator/index';
 import './generator.css';
@@ -18,29 +18,41 @@ export default function Generator() {
   const [openFile, setOpenFile] = useState(null);
   const [copied, setCopied] = useState(null);
   const [copyError, setCopyError] = useState(null);
-  const [copyTimeoutId, setCopyTimeoutId] = useState(null);
-  const [errorTimeoutId, setErrorTimeoutId] = useState(null);
+  const copyTimeoutRef = useRef(null);
+  const errorTimeoutRef = useRef(null);
 
   const mode = MODES.find(m => m.id === modeId);
+
+  function clearCopyTimers() {
+    if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
+    if (errorTimeoutRef.current) clearTimeout(errorTimeoutRef.current);
+    copyTimeoutRef.current = null;
+    errorTimeoutRef.current = null;
+  }
+
+  useEffect(() => clearCopyTimers, []);
 
   function handleGenerate() {
     const result = generate(spec, modeId);
     setFiles(result);
     setOpenFile(result[0]?.id ?? null);
+    clearCopyTimers();
     setCopied(null);
     setCopyError(null);
   }
 
   async function handleCopy(file) {
+    clearCopyTimers();
+
     try {
       await navigator.clipboard.writeText(file.content);
       setCopied(file.id);
       setCopyError(null);
-      setTimeout(() => setCopied(null), 2000);
+      copyTimeoutRef.current = setTimeout(() => setCopied(null), 2000);
     } catch {
       setCopied(null);
       setCopyError(file.id);
-      setTimeout(() => setCopyError(null), 3000);
+      errorTimeoutRef.current = setTimeout(() => setCopyError(null), 3000);
     }
   }
 
@@ -74,7 +86,7 @@ export default function Generator() {
             role="tab"
             aria-selected={modeId === m.id}
             className={'mode-tab' + (modeId === m.id ? ' active' : '')}
-            onClick={() => { setModeId(m.id); setFiles([]); setOpenFile(null); setCopyError(null); }}
+            onClick={() => { setModeId(m.id); setFiles([]); setOpenFile(null); clearCopyTimers(); setCopyError(null); }}
           >
             <span className="mode-label">{m.label}</span>
             <span className="mode-tagline">{m.tagline}</span>
