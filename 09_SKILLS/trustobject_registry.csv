@@ -1,0 +1,11 @@
+trust_object_id,item_id,title,input_type,current_status,decision_authority,evidence_log_id,created_at,last_reviewed_at,next_review_trigger
+TO-0001,trustobject-v0.2,TrustObject v0.2,artefact,approved,human,EL-0001,2026-06-13,2026-06-13,policy_change
+TO-0002,trustobject-registry-v0.1,TrustObject Registry v0.1,artefact,review_required,human,EL-0002,2026-06-15,2026-06-15,manual_review
+TO-0003,fundamental-project-artefacts,Fundamental Project Artefacts,artefact,review_required,human,EL-0003,2026-06-15,2026-06-15,manual_review
+TO-0004,analytical-execution-protocol-srl-v1,Analytical Execution Protocol / SRL v1,prompt,review_required,human,EL-0004,2026-06-15,2026-06-15,manual_review
+TO-0005,react-loop-implementation,ReAct loop implementation,artefact,review_required,human,EL-0005,2026-06-15,2026-06-15,manual_review
+TO-0006,dr-steven-lees-ai-companion-engineer,Dr Steven Lees AI / Companion Engineer,artefact,review_required,human,EL-0006,2026-06-15,2026-06-15,manual_review
+TO-0007,safe-intake,Safe Intake,artefact,active,human,EL-0007,2026-06-15,2026-06-15,public_use_review
+TO-0008,aspron,ASPRON,artefact,review_required,human,EL-0008,2026-06-15,2026-06-15,manual_review
+TO-0009,claim-ledger,Claim Ledger,artefact,review_required,human,EL-0009,2026-06-15,2026-06-15,manual_review
+TO-0010,project-librarian,Project Librarian,artefact,review_required,human,EL-0010,2026-06-15,2026-06-15,manual_review
