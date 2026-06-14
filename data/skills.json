@@ -1,0 +1,38 @@
+[
+  {
+    "name": "AI workflow design",
+    "evidenceProjectIds": ["safe-intake-proof-001", "lab-ai-tech-solutions-web"]
+  },
+  {
+    "name": "Document intelligence",
+    "evidenceProjectIds": ["safe-intake-proof-001"]
+  },
+  {
+    "name": "Prompt systems",
+    "evidenceProjectIds": ["ai-website-builder-library", "subzteveo-creative-systems"]
+  },
+  {
+    "name": "Responsible AI controls",
+    "evidenceProjectIds": ["safe-intake-proof-001", "ai-website-builder-library"]
+  },
+  {
+    "name": "React",
+    "evidenceProjectIds": ["lab-ai-tech-solutions-web"]
+  },
+  {
+    "name": "Next.js",
+    "evidenceProjectIds": ["lab-ai-tech-solutions-web"]
+  },
+  {
+    "name": "TypeScript",
+    "evidenceProjectIds": ["lab-ai-tech-solutions-web"]
+  },
+  {
+    "name": "Tailwind",
+    "evidenceProjectIds": ["lab-ai-tech-solutions-web"]
+  },
+  {
+    "name": "Music technology",
+    "evidenceProjectIds": ["subzteveo-creative-systems"]
+  }
+]
