@@ -1,0 +1,74 @@
+[
+  {
+    "id": "safe-intake-proof-001",
+    "name": "Safe Intake Proof 001",
+    "problem": "Teams need a safer way to prepare documents before AI search, summarisation, or retrieval touches sensitive material.",
+    "role": "Founder / systems designer / implementation reviewer",
+    "stack": ["React", "Workflow states", "Evidence ledger pattern", "Document classification model", "Approval gates"],
+    "metrics": [],
+    "evidence": [
+      "Demonstrates document intake, classification, quarantine, review states, approval gates, evidence ledger events, AI-ingestion blocking, and controlled workflow transitions.",
+      "Framed as a working proof, not production software, a compliance product, or a full platform."
+    ],
+    "links": {
+      "caseStudy": "#",
+      "demo": "#",
+      "github": "#"
+    },
+    "status": "Working proof"
+  },
+  {
+    "id": "ai-website-builder-library",
+    "name": "AI Website Builder Prompt Library",
+    "problem": "AI website builders can drift into fake claims, weak structure, inaccessible layouts, and generic copy without a controlled brief.",
+    "role": "Prompt systems designer / product reviewer",
+    "stack": ["Markdown", "Prompt contracts", "Claim audit", "Client intake", "Website QA"],
+    "metrics": [],
+    "evidence": [
+      "Defines reusable prompts for personal brand sites, client intake, service pages, visual direction, accessibility checks, and claim audits.",
+      "Includes rules to avoid fake testimonials, unsupported metrics, invented client logos, and unsafe user input handling."
+    ],
+    "links": {
+      "caseStudy": "#",
+      "demo": "#",
+      "github": "#"
+    },
+    "status": "Prompt library v0.1"
+  },
+  {
+    "id": "lab-ai-tech-solutions-web",
+    "name": "LAB AI & Tech Solutions Website",
+    "problem": "LAB needs a public proof layer that explains what it does, who it helps, why it is different, what proof exists, and how to engage.",
+    "role": "Founder / product owner / implementation reviewer",
+    "stack": ["Next.js", "React", "TypeScript", "Tailwind", "GitHub", "Vercel-ready architecture"],
+    "metrics": [],
+    "evidence": [
+      "Homepage direction centred on Safe Intake Proof 001, evidence-first positioning, and controlled AI workflows.",
+      "Repository used as the source of truth for website build decisions and implementation."
+    ],
+    "links": {
+      "caseStudy": "#",
+      "demo": "#",
+      "github": "https://github.com/9TEVE-O/lab-ai-tech-solutions-web"
+    },
+    "status": "Active build"
+  },
+  {
+    "id": "subzteveo-creative-systems",
+    "name": "Subzteveø Creative Systems",
+    "problem": "Creative AI and music workflows need structure without removing human judgement, taste, or authorship.",
+    "role": "Music technologist / creative systems designer",
+    "stack": ["Ableton", "Prompt design", "Creative AI workflows", "Writing systems", "Music-tech process design"],
+    "metrics": [],
+    "evidence": [
+      "Explores language, sound, prompting, Ableton workflows, public writing, and creative technology systems.",
+      "Positioned as creative practice, not an automated content factory."
+    ],
+    "links": {
+      "caseStudy": "#",
+      "demo": "#",
+      "github": "#"
+    },
+    "status": "Creative systems practice"
+  }
+]
