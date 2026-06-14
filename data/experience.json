@@ -1,0 +1,16 @@
+[
+  {
+    "id": "lab-founder",
+    "title": "Founder / Operator",
+    "organisation": "LAB AI & Tech Solutions",
+    "summary": "Building evidence-first AI workflow proofs, website systems, prompt libraries, and practical document-intelligence patterns.",
+    "evidenceProjectIds": ["safe-intake-proof-001", "ai-website-builder-library", "lab-ai-tech-solutions-web"]
+  },
+  {
+    "id": "creative-systems",
+    "title": "Creative Systems Designer",
+    "organisation": "Subzteveø",
+    "summary": "Developing music-tech, AI-assisted creative workflows, writing systems, and prompt-led creative processes.",
+    "evidenceProjectIds": ["subzteveo-creative-systems"]
+  }
+]
