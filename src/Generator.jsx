@@ -36,7 +36,7 @@ export default function Generator() {
 
   function switchInputMode(next) {
     setInputMode(next);
-    if (next === 'paste') setSpec('');
+    setSpec('');
     setFiles([]);
     setOpenFile(null);
     clearCopyTimers();
