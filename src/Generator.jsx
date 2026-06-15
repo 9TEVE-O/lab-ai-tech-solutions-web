@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { MODES } from './generator/modes';
 import { generate } from './generator/index';
+import GuidedGenerator from './GuidedGenerator';
 import './generator.css';
 
 const PLACEHOLDER = `Site name: Acme Corp
@@ -13,6 +14,7 @@ Sensitive areas: billing, user data, admin`;
 
 export default function Generator() {
   const [modeId, setModeId] = useState('starter');
+  const [inputMode, setInputMode] = useState('paste');
   const [spec, setSpec] = useState('');
   const [files, setFiles] = useState([]);
   const [openFile, setOpenFile] = useState(null);
@@ -31,6 +33,15 @@ export default function Generator() {
   }
 
   useEffect(() => clearCopyTimers, []);
+
+  function switchInputMode(next) {
+    setInputMode(next);
+    if (next === 'paste') setSpec('');
+    setFiles([]);
+    setOpenFile(null);
+    clearCopyTimers();
+    setCopyError(null);
+  }
 
   function handleGenerate() {
     const result = generate(spec, modeId);
@@ -95,17 +106,46 @@ export default function Generator() {
       </div>
 
       <div className="gen-input-area">
-        <label htmlFor="spec-input" className="input-label">
-          Paste your board-spec or site description
-        </label>
-        <textarea
-          id="spec-input"
-          className="spec-textarea"
-          rows={8}
-          placeholder={PLACEHOLDER}
-          value={spec}
-          onChange={e => setSpec(e.target.value)}
-        />
+        <div className="input-mode-toggle" role="tablist" aria-label="Input mode">
+          <button
+            role="tab"
+            aria-selected={inputMode === 'paste'}
+            className={'mode-input-tab' + (inputMode === 'paste' ? ' active' : '')}
+            onClick={() => switchInputMode('paste')}
+          >
+            Paste Spec
+          </button>
+          <button
+            role="tab"
+            aria-selected={inputMode === 'guided'}
+            className={'mode-input-tab' + (inputMode === 'guided' ? ' active' : '')}
+            onClick={() => switchInputMode('guided')}
+          >
+            Guided Form
+          </button>
+        </div>
+
+        {inputMode === 'paste' ? (
+          <>
+            <label htmlFor="spec-input" className="input-label">
+              Paste your board-spec or site description
+            </label>
+            <textarea
+              id="spec-input"
+              className="spec-textarea"
+              rows={8}
+              placeholder={PLACEHOLDER}
+              value={spec}
+              onChange={e => setSpec(e.target.value)}
+            />
+          </>
+        ) : (
+          <>
+            <span className="input-label">Fill in your site details</span>
+            <GuidedGenerator onSpecChange={setSpec} />
+          </>
+        )}
+
         <button
           className="button primary gen-btn"
           onClick={handleGenerate}

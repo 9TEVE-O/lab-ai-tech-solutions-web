@@ -1,3 +1,5 @@
+import Generator from './Generator';
+
 const workflowSteps = [
   'Upload',
   'Classify',
@@ -42,6 +44,7 @@ function Header() {
       </a>
       <nav aria-label="Primary navigation">
         <a href="#safe-intake">Safe Intake</a>
+        <a href="#generator">Generator</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -290,6 +293,7 @@ export default function App() {
       <HomePage />
       <SafeIntakePage />
       <AuditOffer />
+      <Generator />
       <AboutPage />
       <ContactPage />
       <Footer />
