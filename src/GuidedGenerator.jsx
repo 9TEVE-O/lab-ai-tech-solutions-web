@@ -17,7 +17,7 @@ function buildSpec(f) {
   const lines = [
     `Site name: ${f.name}`,
     `Domain: ${f.domain}`,
-    `Description: ${f.description}`,
+    `Description: ${f.description.replace(/[\r\n]+/g, ' ').trim()}`,
     `Contact: ${f.contact}`,
     `Allows AI indexing: ${f.allowsIndexing ? 'yes' : 'no'}`,
     `TDM opt-out: ${f.tdmOptOut ? 'yes' : 'no'}`,
