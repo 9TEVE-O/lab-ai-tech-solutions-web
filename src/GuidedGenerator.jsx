@@ -11,6 +11,9 @@ const DEMO = {
 };
 
 function buildSpec(f) {
+  if (!f.name.trim() || !f.domain.trim() || !f.description.trim() || !f.contact.trim()) {
+    return '';
+  }
   const lines = [
     `Site name: ${f.name}`,
     `Domain: ${f.domain}`,
@@ -29,9 +32,6 @@ function readinessScore(f) {
     f.domain.trim() !== '',
     f.description.trim() !== '',
     f.contact.trim() !== '',
-    true,
-    true,
-    f.sensitiveAreas.trim() !== '',
   ];
   return Math.round((checks.filter(Boolean).length / checks.length) * 100);
 }
