@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import './lab-llm.css';
 
 const conversationRecord = {
   title: 'Cognitive Infrastructure Governance',
