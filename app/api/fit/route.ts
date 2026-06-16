@@ -10,7 +10,7 @@ function words(text: string) {
 }
 
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => ({}));
+  const body = (await request.json().catch(() => null)) || {};
   const input = typeof body.jobDescription === 'string' ? body.jobDescription.slice(0, 6000) : '';
   const wanted = new Set(words(input));
 
