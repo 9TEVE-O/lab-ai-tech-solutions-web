@@ -19,7 +19,7 @@ function score(project: Project, queryTokens: string[]) {
 }
 
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => ({}));
+  const body = (await request.json().catch(() => null)) || {};
   const question = typeof body.question === 'string' ? body.question.slice(0, 2000) : '';
   const queryTokens = tokens(question);
 
