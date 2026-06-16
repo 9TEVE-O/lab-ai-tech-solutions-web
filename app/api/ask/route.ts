@@ -34,7 +34,8 @@ export async function POST(request: Request) {
     .slice(0, 3);
 
   if (!matched.length) {
-    return NextResponse.json({ answer: `${NOT_EVIDENCED}\n\nClosest relevant project to review: ${projects[0].name}.` });
+    const fallbackProject = projects[0]?.name ? '\n\nClosest relevant project to review: ' + projects[0].name + '.' : '';
+    return NextResponse.json({ answer: NOT_EVIDENCED + fallbackProject });
   }
 
   const answer = matched.map(({ project }) => [
