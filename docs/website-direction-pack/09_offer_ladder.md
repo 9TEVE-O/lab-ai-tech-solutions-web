@@ -61,6 +61,18 @@ The team wants to use AI, but cannot clearly answer:
 - what is blocked
 - what evidence exists after the workflow runs
 
+## Agent Context Risk
+
+Before documents are used by AI agents, they need clear source status, access boundaries, sensitivity labels, and evidence pathways.
+
+This audit identifies where an agent may retrieve the wrong source, trust stale material, expose sensitive content, or generate answers that cannot be traced back to approved evidence.
+
+The deeper risk is not only hallucination. It is that an AI system may treat a draft, duplicate, archive, or unsupported document as if it were an approved source of truth.
+
+Core diagnostic line:
+
+> Retrieval is not authority. A search result is not an approved source of truth.
+
 ## Outcome
 
 A clear map of current intake risk and a practical next-step plan.
@@ -232,6 +244,29 @@ The team wants a knowledge system, but its documents are messy, sensitive, dupli
 
 A structured readiness layer before retrieval, indexing, or AI-assisted answering.
 
+## Governed Retrieval and Context Controls
+
+This sprint designs the retrieval and review controls needed for AI workflows to operate safely.
+
+The goal is not to connect AI to every available document. The goal is to define which sources are approved, which sources are excluded, which answers require evidence, and which outputs should be refused or escalated for human review.
+
+This may include:
+
+- source classification
+- approved-source lists
+- exclusion and block lists
+- human review gates
+- evidence-backed answer patterns
+- refusal rules for missing or ambiguous evidence
+- access-aware retrieval boundaries
+- glossary and definition control
+- retrieval test cases for context quality
+- citation and answer-quality standards
+
+Working principle:
+
+> The agent can retrieve information, but the organisation must define what the agent is allowed to trust.
+
 ## Deliverables
 
 - content inventory
@@ -352,6 +387,12 @@ Avoid:
 | Evidence Layer Audit | Claim ledger and risk register |
 | Safe Intake Workflow Prototype | Clickable demo or workflow prototype |
 | AI Knowledge System Readiness Sprint | Readiness report and approved-source map |
+
+---
+
+# Changelog
+
+- Agent Context Readiness positioning inserted into website offer ladder as offer-layer language only; no standalone offer created.
 
 ---
 
