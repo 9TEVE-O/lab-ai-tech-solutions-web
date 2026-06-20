@@ -15,7 +15,7 @@ const workflowSteps = [
 const principles = [
   {
     title: 'Classify before use',
-    body: 'Documents should be understood before they become AI context.',
+    body: 'Documents should be understood, labelled, and status-checked before they become AI context.',
   },
   {
     title: 'Human review stays visible',
@@ -23,15 +23,17 @@ const principles = [
   },
   {
     title: 'Evidence should travel with answers',
-    body: 'A useful AI workflow should help explain what information supported an output.',
+    body: 'A useful AI workflow should show which approved source supported an answer, and refuse when evidence is missing.',
   },
 ];
 
 const auditItems = [
   'Where documents enter the workflow',
+  'Which sources are current, stale, draft, or approved',
   'Where sensitive or unclear material appears',
   'Where approval decisions happen',
   'What should be blocked before AI use',
+  'What an AI agent should not be allowed to trust',
   'What evidence needs to be retained',
 ];
 
@@ -87,7 +89,7 @@ function HomePage() {
           <h2>No approval = no AI access.</h2>
           <p>
             Before information reaches AI systems, it should be classified, reviewed,
-            approved, and traceable.
+            approved, and traceable before retrieval or AI use.
           </p>
         </div>
       </section>
@@ -105,6 +107,9 @@ function HomePage() {
           <p>
             LAB focuses on the controlled intake layer before AI use: document handling, workflow
             states, review gates, retrieval boundaries, and evidence trails.
+          </p>
+          <p>
+            Retrieval is not authority. A search result is not the same as an approved source of truth.
           </p>
         </div>
       </section>
@@ -201,6 +206,10 @@ function AuditOffer() {
         <p>
           A practical review for teams that want to understand whether their documents,
           approvals, and knowledge workflows are ready for safer AI use.
+        </p>
+        <p>
+          The audit looks for places where an AI system may trust stale material, draft content,
+          sensitive information, or unsupported sources before the organisation has approved them.
         </p>
       </div>
       <div className="card audit-card">
