@@ -1,1 +1,19 @@
 {"private":true,"scripts":{"dev":"next dev","build":"next build","start":"next start","lint":"next lint"},"dependencies":{"@types/node":"latest","@types/react":"latest","@types/react-dom":"latest","autoprefixer":"latest","next":"latest","postcss":"latest","react":"latest","react-dom":"latest","tailwindcss":"latest","typescript":"latest"},"devDependencies":{}}
+{
+  "name": "lab-ai-tech-solutions-web",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lucide-react": "1.18.0",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "6.0.2",
+    "vite": "8.0.16"
+  }
+}
