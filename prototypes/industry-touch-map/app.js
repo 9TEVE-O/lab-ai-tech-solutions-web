@@ -93,9 +93,10 @@ const sectors = [
       updateResults();
     });
 
-    document.querySelectorAll('[data-view]').forEach(button => {
+    const viewButtons = document.querySelectorAll('.view-button[data-view]');
+    viewButtons.forEach(button => {
       button.addEventListener('click', () => {
         document.body.dataset.view = button.dataset.view;
-        document.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+        viewButtons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
       });
     });
