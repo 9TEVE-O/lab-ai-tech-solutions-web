@@ -88,7 +88,12 @@ function usePathname() {
     const hash = hashIndex === -1 ? '' : path.slice(hashIndex);
     const pathChanged = window.location.pathname !== nextPath;
 
-    if (!pathChanged && !hash) return;
+    if (!pathChanged && !hash) {
+      if (!window.location.hash) return;
+      window.history.pushState({}, '', nextPath);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      return;
+    }
 
     if (!pathChanged && hash) {
       window.history.pushState({}, '', nextPath + hash);
