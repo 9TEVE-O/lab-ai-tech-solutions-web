@@ -73,11 +73,34 @@ function usePathname() {
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
+  useEffect(() => {
+    const id = window.location.hash.slice(1);
+    if (!id) return undefined;
+    const timer = window.setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView();
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, [pathname]);
+
   const navigate = (path) => {
-    if (window.location.pathname === path) return;
-    window.history.pushState({}, '', path);
-    setPathname(path);
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    const hashIndex = path.indexOf('#');
+    const nextPath = (hashIndex === -1 ? path : path.slice(0, hashIndex)) || '/';
+    const hash = hashIndex === -1 ? '' : path.slice(hashIndex);
+    const pathChanged = window.location.pathname !== nextPath;
+
+    if (!pathChanged && !hash) return;
+
+    if (!pathChanged && hash) {
+      window.history.pushState({}, '', nextPath + hash);
+      document.getElementById(hash.slice(1))?.scrollIntoView();
+      return;
+    }
+
+    window.history.pushState({}, '', nextPath + hash);
+    setPathname(nextPath);
+    if (!hash) {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
   };
 
   return [pathname, navigate];
@@ -110,7 +133,11 @@ function Header({ navigate, safePage }) {
         <RouteLink to="/" navigate={navigate}>Home</RouteLink>
         <RouteLink to={SAFE_INTAKE_PATH} navigate={navigate} className={safePage ? 'active-nav' : ''}>Safe Intake</RouteLink>
         {!safePage && <a href="#about">About</a>}
-        {!safePage && <a href="#contact">Contact</a>}
+        {safePage ? (
+          <RouteLink to="/#contact" navigate={navigate}>Contact</RouteLink>
+        ) : (
+          <a href="#contact">Contact</a>
+        )}
       </nav>
     </header>
   );
@@ -299,7 +326,7 @@ function HomePage({ navigate }) {
         </div>
       </section>
 
-      <section id="contact" className="section-pad contact-panel" aria-labelledby="contact-heading">
+      <section id="contact" className="page-section section-pad contact-panel" aria-labelledby="contact-heading">
         <div>
           <p className="eyebrow">Contact</p>
           <h2 id="contact-heading">Working through an AI workflow that needs clearer boundaries?</h2>
@@ -429,8 +456,8 @@ function SafeIntakePage({ navigate }) {
           <h2>Return to the wider LAB evidence interface.</h2>
         </div>
         <div className="cta-row">
-          <RouteLink className="button primary" to="/" navigate={navigate}>Back to homepage</RouteLink>
-          <RouteLink className="button secondary" to="/" navigate={navigate}>View selected work</RouteLink>
+          <RouteLink className="button primary" to="/" navigate={navigate}>Back to LAB AI & Tech Solutions</RouteLink>
+          <RouteLink className="button secondary" to="/#contact" navigate={navigate}>Discuss a workflow</RouteLink>
         </div>
       </section>
     </>
