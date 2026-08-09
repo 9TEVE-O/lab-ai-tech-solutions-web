@@ -16,7 +16,7 @@ const knowledgeCards = [
     id: 'safe-intake',
     title: 'Safe Intake',
     body:
-      'Safe Intake is the controlled entry point before documents become AI context. It emphasises classification, quarantine, review, approval gates, evidence ledger events, and blocked AI ingestion until approval.',
+      'Safe Intake is the controlled entry point before documents become AI context. Proof 001 demonstrates classification, quarantine, a human-review handoff, evidence ledger events, and blocked AI ingestion at PENDING_REVIEW. APPROVED and REJECTED are modelled future states, but they are not enabled in the current proof.',
     triggers: ['safe intake', 'intake', 'document', 'approval', 'redaction', 'review', 'classification'],
   },
   {
