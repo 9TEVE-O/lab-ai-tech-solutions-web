@@ -43,7 +43,7 @@ jobs:
       - name: Capture visual verification screenshots
         run: |
           mkdir -p visual-verification
-          npm run preview -- --host 127.0.0.1 > /tmp/lab-preview.log 2>&1 &
+          npm run preview -- --host 127.0.0.1 --port 4173 --strictPort > /tmp/lab-preview.log 2>&1 &
           preview_pid=$!
           trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
 
