@@ -36,3 +36,37 @@ jobs:
             exit 0
           fi
           exit "$code"
+
+      - name: Install Chromium for visual verification
+        run: npx --yes playwright@1.55.0 install --with-deps chromium
+
+      - name: Capture visual verification screenshots
+        run: |
+          mkdir -p visual-verification
+          npm run preview -- --host 127.0.0.1 > /tmp/lab-preview.log 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
+
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:4173/ > /dev/null; then
+              break
+            fi
+            if [ "$attempt" = "30" ]; then
+              cat /tmp/lab-preview.log
+              exit 1
+            fi
+            sleep 1
+          done
+
+          npx --yes playwright@1.55.0 screenshot --browser chromium --viewport-size="1440,1000" --full-page http://127.0.0.1:4173/ visual-verification/home-desktop-1440.png
+          npx --yes playwright@1.55.0 screenshot --browser chromium --viewport-size="390,844" --full-page http://127.0.0.1:4173/ visual-verification/home-mobile-390.png
+          npx --yes playwright@1.55.0 screenshot --browser chromium --viewport-size="1440,1000" --full-page http://127.0.0.1:4173/safe-intake-proof-001 visual-verification/safe-intake-desktop-1440.png
+          npx --yes playwright@1.55.0 screenshot --browser chromium --viewport-size="390,844" --full-page http://127.0.0.1:4173/safe-intake-proof-001 visual-verification/safe-intake-mobile-390.png
+
+      - name: Upload visual verification evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-verification
+          path: visual-verification/*.png
+          if-no-files-found: error
+          retention-days: 14
