@@ -1,3 +1,5 @@
+import './workflow-review.css';
+
 const reviewAreas = [
   ['01', 'Source material', 'What information enters the workflow, where it comes from, and what is actually entitled to support the work.'],
   ['02', 'AI and tools', 'Where AI is already used or proposed, what it receives, and what actions or outputs it can produce.'],
