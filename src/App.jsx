@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const SAFE_INTAKE_PATH = '/safe-intake-proof-001';
+const WORKFLOW_REVIEW_PATH = '/services/ai-workflow-review';
 
 const proofSteps = [
   ['01', 'Document received', 'Synthetic fixture enters the intake boundary.'],
@@ -171,6 +172,7 @@ function HomePage({ navigate }) {
           <p className="eyebrow">Primary working offer</p>
           <h2 id="offer-heading">AI Workflow Review</h2>
           <p>A practical review of one defined AI-assisted workflow. The review maps where AI touches sources, documents, tools, decisions, approvals, evidence, failure handling and rollback.</p>
+          <RouteLink className="text-link" to={WORKFLOW_REVIEW_PATH} navigate={navigate}>See the AI Workflow Review →</RouteLink>
         </div>
         <div className="card-grid two">
           <article className="card">
