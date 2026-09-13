@@ -172,7 +172,7 @@ function HomePage({ navigate }) {
           <p className="eyebrow">Primary working offer</p>
           <h2 id="offer-heading">AI Workflow Review</h2>
           <p>A practical review of one defined AI-assisted workflow. The review maps where AI touches sources, documents, tools, decisions, approvals, evidence, failure handling and rollback.</p>
-          <RouteLink className="text-link" to={WORKFLOW_REVIEW_PATH} navigate={navigate}>See the AI Workflow Review →</RouteLink>
+          <a className="text-link" href={WORKFLOW_REVIEW_PATH}>See the AI Workflow Review →</a>
         </div>
         <div className="card-grid two">
           <article className="card">
