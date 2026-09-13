@@ -62,6 +62,8 @@ jobs:
           npx --yes playwright@1.55.0 screenshot --browser chromium --viewport-size="390,844" --full-page http://127.0.0.1:4173/ visual-verification/home-mobile-390.png
           npx --yes playwright@1.55.0 screenshot --browser chromium --viewport-size="1440,1000" --full-page http://127.0.0.1:4173/safe-intake-proof-001 visual-verification/safe-intake-desktop-1440.png
           npx --yes playwright@1.55.0 screenshot --browser chromium --viewport-size="390,844" --full-page http://127.0.0.1:4173/safe-intake-proof-001 visual-verification/safe-intake-mobile-390.png
+          npx --yes playwright@1.55.0 screenshot --browser chromium --viewport-size="1440,1000" --full-page http://127.0.0.1:4173/services/ai-workflow-review visual-verification/workflow-review-desktop-1440.png
+          npx --yes playwright@1.55.0 screenshot --browser chromium --viewport-size="390,844" --full-page http://127.0.0.1:4173/services/ai-workflow-review visual-verification/workflow-review-mobile-390.png
 
       - name: Upload visual verification evidence
         uses: actions/upload-artifact@v4
